@@ -1,0 +1,42 @@
+﻿@model Track
+@{
+    ViewData["Title"] = "AddTrack";
+}
+
+<h1>AddTrack</h1>
+
+<form asp-action="Add" asp-controller="Music" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="All" class="text-danger">
+    </div>
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" placeholder="Recipient's title track" aria-label="Recipient's title" aria-describedby="button-addon2">
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ArtistDb.Name" class="mb-1"></label>
+        <input asp-for="ArtistDb.Name" rows="5" id="artist"  class="form-control" placeholder="Recipient's name artist" aria-label="Recipient's title" aria-describedby="button-addon2">
+        <span asp-validation-for="ArtistDb.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AlbumDb.Title" class="mb-1"></label>
+        <input asp-for="AlbumDb.Title" rows="5" id="album"  class="form-control" placeholder="Recipient's title album" aria-label="Recipient's title" aria-describedby="button-addon2">
+        <span asp-validation-for="AlbumDb.Title" class="text-danger"></span>
+    </div>
+
+    <div class="input-group mt-3">
+        <h2 class="mr-5">Add Track </h2>
+        <input  name="PreviewUrl" type="file" class="form-control" id="PreviewUrl">
+        <label class="input-group-text" for="PreviewUrl">Upload</label>
+    </div>
+
+    <div class="input-group mt-3">
+        <h2 class="mr-4">Add Image </h2>
+        <input name="Cover_mediumUrl" type="file" class="form-control" id="Cover_mediumUrl">
+        <label class="input-group-text" for="Cover_mediumUrl">Upload</label>
+    </div>
+
+    <button class="btn btn-primary mt-2 w-25">Add</button>
+    </form>

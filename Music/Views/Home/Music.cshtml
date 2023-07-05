@@ -1,0 +1,32 @@
+﻿@model MusicApiAlbum
+@{
+    ViewData["Title"] = "Music";
+}
+
+<h1>Track List</h1>
+
+<div class="row">
+    <div class="col-9">
+        @foreach (Contributor item in Model.contributors)
+        {
+            @if (item.type != null)
+            {
+                <h2>@item.name</h2>
+                <img src="@item.picture_xl" class="card-img-top" alt="..." />
+            }
+            else
+            {
+                <h2>Album not found</h2>
+            }
+        }
+
+    </div>
+    <div class="col-3">
+        <h2>@Model.title</h2>
+        @for (int i = 0; i < Model.tracks.data.Length; i++)
+        {
+            <p>@Model.tracks.data[i].title</p>
+            <audio src="@Model.tracks.data[i].preview" controls>Play</audio>
+        }
+    </div>
+</div>
