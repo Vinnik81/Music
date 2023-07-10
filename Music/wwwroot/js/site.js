@@ -16,6 +16,7 @@ function initPagination(p, t, u) {
 
 let isLoading = true;
 
+
 $(window).scroll(async function () {
     if ($(window).scrollTop() + $(window).height() > $(document).height() - 150 && isLoading) {
         isLoading = false;
@@ -27,6 +28,7 @@ $(window).scroll(async function () {
             let html = await response.text();
             console.log(html);
             $('#musicResults').append(html);
+            
             isLoading = true;
             $('audio').on('play', function () {
                 // При нажатии на тег audio, останавливаем воспроизведение остальных треков
@@ -35,12 +37,15 @@ $(window).scroll(async function () {
                     this.currentTime = 0;
                 });
             });
+            const newUrl = `${url}&page=${page}`;
+            window.history.pushState({ page: page }, '', newUrl);
         }
         else {
             $(this).remove();
         }
     }
 });
+
 
 //var prevScrollpos = window.pageYOffset;
 //window.onscroll = function () {
