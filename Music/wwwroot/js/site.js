@@ -37,9 +37,14 @@ $(window).scroll(async function () {
                     this.currentTime = 0;
                 });
             });
+
+            $('.pagination li.active').removeClass('active');
+            $('.pagination li').eq(page - 1).addClass('active');
+
             const newUrl = `${url}&page=${page}`;
             window.history.pushState({ page: page }, '', newUrl);
         }
+        
         else {
             $(this).remove();
         }
@@ -47,16 +52,6 @@ $(window).scroll(async function () {
 });
 
 
-//var prevScrollpos = window.pageYOffset;
-//window.onscroll = function () {
-//    var currentScrollPos = window.pageYOffset;
-//    if (prevScrollpos > currentScrollPos) {
-//        window.location.href = `${url}&page=${page--}`; // заменить на ссылку на предыдущую страницу
-//    } else {
-//        window.location.href = `${url}&page=${page++}`; // заменить на ссылку на следующую страницу
-//    }
-//    prevScrollpos = currentScrollPos;
-//}
 
 //var audioElements = document.getElementsByTagName('audio');
 //for (var i = 0; i < audioElements.length; i++) {

@@ -59,7 +59,7 @@
 
     @section Scripts {
         <script>
-            initPagination(@Model.CurrentPage, @Model.TotalPages, '@Url.ActionLink("SearchResult", "Home", new {title = Model.Title})');
+        initPagination(@Model.CurrentPage, @Model.TotalPages, '@Url.ActionLink("SearchResult", "Home", new {title = Model.Title})');
         </script>
         <script>
             stopAudio(@Model.Musics)
